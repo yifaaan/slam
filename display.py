@@ -2,7 +2,6 @@ import sdl2
 import sdl2.ext
 
 
-
 class Display(object):
     def __init__(self, W, H):
         sdl2.ext.init()
