@@ -4,7 +4,7 @@ from skimage.measure import ransac
 from skimage.transform import FundamentalMatrixTransform
 class Extractor(object):
     def __init__(self):
-        self.orb = cv2.ORB_create()
+        self.orb = cv2.ORB_create(5000)
         self.bf = cv2.BFMatcher(cv2.NORM_HAMMING)
         self.last = None
 
@@ -27,7 +27,6 @@ class Extractor(object):
                     kp_2 = self.last['kps'][m.trainIdx].pt
                     ret.append((kp_1, kp_2))
             
-        
         if len(ret) > 0:
             ret = np.array(ret)
             print(ret.shape)
@@ -39,5 +38,4 @@ class Extractor(object):
             ret = ret[inliers]
         self.last = {'kps': kps, 'des': des}
 
-        # F, mask = cv2.findFundamentalMat(kps_q, kps_t, cv2.FM_8POINT)
-        return ret 
+        return ret
