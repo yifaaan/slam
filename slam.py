@@ -8,9 +8,9 @@ W = int(1920//2)
 H = int(1080//2)
 
 dis = Display(W, H)
-F = 282
+F = 1
 K = np.array(([F,0,W//2],[0,F,H//2],[0, 0, 1]))
-
+print(K)
 fe = Extractor(K)
 
 def process_frame(img):
